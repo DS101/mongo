@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @author.name %>
+</p>
+
+<% if @author.posts.size > 0 %>
+  <h2>Posts</h2>
+  <% for post in @author.posts %>
+    <h3><%= post.name %></h3>
+    <p><%= post.content %></p>
+    <tr>
+        <td><%= link_to 'Show', author_post_path(@author.id, post.id) %></td>
+        <td><%= link_to 'Edit', author_post_path(@author.id, post.id) %></td>
+        <td><%= link_to 'Destroy', author_post_path(@author.id, post.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+<% end %>
+
+<h2>New Post</h2>
+
+<%= form_for [@author, Post.new] do |f| %>
+  <p><%= f.label :name %> <%= f.text_field :name %></p>
+  <p><%= f.text_area :content, :rows => 10 %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Back', authors_path %>

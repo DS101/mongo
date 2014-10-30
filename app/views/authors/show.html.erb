@@ -11,8 +11,7 @@
     <h3><%= post.name %></h3>
     <p><%= post.content %></p>
     <tr>
-        <td><%= link_to 'Show', author_post_path(@author.id, post.id) %></td>
-        <td><%= link_to 'Edit', author_post_path(@author.id, post.id) %></td>
+        <td><%= link_to 'Edit', edit_author_post_path(@author.id, post.id) %></td>
         <td><%= link_to 'Destroy', author_post_path(@author.id, post.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
